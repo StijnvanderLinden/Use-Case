@@ -7,3 +7,6 @@ D:\ICT2\SE2\Use Case\Use Case\obj\Debug\Use_Case.Properties.Resources.resources
 D:\ICT2\SE2\Use Case\Use Case\obj\Debug\Use Case.csproj.GenerateResource.Cache
 D:\ICT2\SE2\Use Case\Use Case\obj\Debug\Use Case.exe
 D:\ICT2\SE2\Use Case\Use Case\obj\Debug\Use Case.pdb
+C:\Users\Stijn\Source\Repos\Use Case\Use Case\bin\Debug\Use Case.exe.config
+C:\Users\Stijn\Source\Repos\Use Case\Use Case\obj\Debug\Use Case.exe
+C:\Users\Stijn\Source\Repos\Use Case\Use Case\obj\Debug\Use Case.pdb
