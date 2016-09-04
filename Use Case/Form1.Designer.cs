@@ -115,6 +115,7 @@
             // rbCreate
             // 
             this.rbCreate.AutoSize = true;
+            this.rbCreate.Checked = true;
             this.rbCreate.Location = new System.Drawing.Point(7, 20);
             this.rbCreate.Name = "rbCreate";
             this.rbCreate.Size = new System.Drawing.Size(56, 17);
@@ -127,28 +128,30 @@
             // 
             this.pictureBox.Location = new System.Drawing.Point(12, 111);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(742, 259);
+            this.pictureBox.Size = new System.Drawing.Size(982, 498);
             this.pictureBox.TabIndex = 2;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // btClear
             // 
-            this.btClear.Location = new System.Drawing.Point(679, 12);
+            this.btClear.Location = new System.Drawing.Point(919, 13);
             this.btClear.Name = "btClear";
             this.btClear.Size = new System.Drawing.Size(75, 23);
             this.btClear.TabIndex = 3;
             this.btClear.Text = "Clear All";
             this.btClear.UseVisualStyleBackColor = true;
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
             // btRemove
             // 
-            this.btRemove.Location = new System.Drawing.Point(679, 41);
+            this.btRemove.Location = new System.Drawing.Point(919, 42);
             this.btRemove.Name = "btRemove";
             this.btRemove.Size = new System.Drawing.Size(75, 23);
             this.btRemove.TabIndex = 4;
             this.btRemove.Text = "Remove";
             this.btRemove.UseVisualStyleBackColor = true;
+            this.btRemove.Click += new System.EventHandler(this.btRemove_Click);
             // 
             // label1
             // 
@@ -171,7 +174,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(766, 382);
+            this.ClientSize = new System.Drawing.Size(1006, 621);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btRemove);
