@@ -16,11 +16,10 @@ namespace Use_Case
         Graphics blad;
         Pen p;
         int i = 0;
-        int j = 0;
         int x1, x2, y1, y2;
         Font myFont = new Font("Arial", 14);
-        List<List<int>> lijnen = new List<List<int>>();
-        List<int> Images = new List<int>();
+        Select select = new Select();
+        List<bool> actors = new List<bool> { false, false, false };
 
         public Form1()
         {
@@ -32,7 +31,7 @@ namespace Use_Case
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            foreach(List<int> list in lijnen)
+            foreach(List<int> list in select.Lijnen)
             {
                 blad.DrawLine(p, list[0], list[1], list[2], list[3]);
             }
@@ -40,27 +39,33 @@ namespace Use_Case
 
         private void btActor_Click(object sender, EventArgs e)
         {
-            if(j > 2)
+            if (actors[0])
             {
-                MessageBox.Show("Kan niet meer Actors toevoegen.");
+                if (actors[1])
+                {
+                    if (actors[2])
+                    {
+                        MessageBox.Show("Kan niet meer Actors toevoegen.");
+                    }
+                    else
+                    {
+                        Actor3.Visible = true;
+                        blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 510);
+                        actors[2] = true;
+                    }
+                }
+                else
+                {
+                    Actor2.Visible = true;
+                    blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 330);
+                    actors[1] = true;
+                }
             }
-            if(j == 2)
-            {
-                Actor3.Visible = true;
-                j++;
-                blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 510);
-            }
-            if(j == 1)
-            {
-                Actor2.Visible = true;
-                j++;
-                blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 330);
-            }
-            if(j == 0)
+            else
             {
                 Actor1.Visible = true;
-                j++;
                 blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 140);
+                actors[0] = true;
             }
         }
 
@@ -84,7 +89,8 @@ namespace Use_Case
                         x2 = muis.X;
                         y2 = muis.Y;
                         blad.DrawLine(p, x1, y1, x2, y2);
-                        lijnen.Add(new List<int> { x1, y1, x2, y2 });
+                        Lijn lijn = new Lijn(x1, y1, x2, y2);
+                        select.Lijnen.Add(new List<int> { x1, y1, x2, y2 });
                     }
                 }
                 else
@@ -102,7 +108,7 @@ namespace Use_Case
         private void btClear_Click(object sender, EventArgs e)
         {
             blad.Clear(Color.White);
-            Images.Clear();
+            select.Lijnen.Clear();
         }
 
         private void btRemove_Click(object sender, EventArgs e)
