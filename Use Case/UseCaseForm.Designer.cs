@@ -189,7 +189,7 @@
             this.Controls.Add(this.txtNaam);
             this.Controls.Add(this.label1);
             this.Name = "UseCaseForm";
-            this.Text = "UseCaseForm";
+            this.Text = "Properties";
             this.ResumeLayout(false);
             this.PerformLayout();
 

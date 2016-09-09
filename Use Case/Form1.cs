@@ -45,22 +45,25 @@ namespace Use_Case
                     else
                     {
                         Actor3.Visible = true;
-                        text.Insert(2, txtInsert.Text);
                         actors[2] = true;
+                        lbActor3.Text = txtInsert.Text;
+                        lbActor3.Visible = Enabled;
                     }
                 }
                 else
                 {
                     Actor2.Visible = true;
-                    text.Insert(1, txtInsert.Text);
                     actors[1] = true;
+                    lbActor2.Text = txtInsert.Text;
+                    lbActor2.Visible = Enabled;
                 }
             }
             else
             {
                 Actor1.Visible = true;
-                text.Insert(0, txtInsert.Text);
                 actors[0] = true;
+                lbActor1.Text = txtInsert.Text;
+                lbActor1.Visible = Enabled;
             }
         }
 
@@ -70,19 +73,19 @@ namespace Use_Case
             {
                 Actor1.Visible = false;
                 actors[0] = false;
-                text.Insert(0, null);
+                lbActor1.Visible = false;
             }
             else if (rbActor2.Checked)
             {
                 Actor2.Visible = false;
                 actors[1] = false;
-                text.Insert(1, null);
+                lbActor2.Visible = false;
             }
             else if (rbActor3.Checked)
             {
                 Actor3.Visible = false;
                 actors[2] = false;
-                text.Insert(2, null);
+                lbActor3.Visible = false;
             }
 
         }
@@ -129,6 +132,15 @@ namespace Use_Case
         {
             blad.Clear(Color.White);
             select.Lijnen.Clear();
+            actors.Insert(0, false);
+            actors.Insert(1, false);
+            actors.Insert(2, false);
+            Actor1.Visible = false;
+            Actor2.Visible = false;
+            Actor3.Visible = false;
+            lbActor1.Visible = false;
+            lbActor2.Visible = false;
+            lbActor3.Visible = false;
         }
 
         private void btRemove_Click(object sender, EventArgs e)
@@ -141,21 +153,6 @@ namespace Use_Case
             foreach (List<int> list in select.Lijnen)
             {
                 blad.DrawLine(p, list[0], list[1], list[2], list[3]);
-            }
-
-            if(text[0] != null)
-            {
-                blad.DrawString(text[0], myFont, Brushes.Black, 23, 140);
-            }
-
-            if (text[1] != null)
-            {
-                blad.DrawString(text[1], myFont, Brushes.Black, 23, 330);
-            }
-
-            if (text[2] != null)
-            {
-                blad.DrawString(text[2], myFont, Brushes.Black, 23, 510);
             }
         }
     }

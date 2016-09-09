@@ -74,7 +74,6 @@ namespace Use_Case
             int midy = (y2 + y1) / 2;
 
             return new List<int> { midx, midy };
-            
         }
     }
 }

@@ -48,6 +48,9 @@
             this.rbActor1 = new System.Windows.Forms.RadioButton();
             this.rbActor3 = new System.Windows.Forms.RadioButton();
             this.btRemoveActor = new System.Windows.Forms.Button();
+            this.lbActor1 = new System.Windows.Forms.Label();
+            this.lbActor2 = new System.Windows.Forms.Label();
+            this.lbActor3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -271,11 +274,50 @@
             this.btRemoveActor.UseVisualStyleBackColor = true;
             this.btRemoveActor.Click += new System.EventHandler(this.btRemoveActor_Click);
             // 
+            // lbActor1
+            // 
+            this.lbActor1.AutoSize = true;
+            this.lbActor1.BackColor = System.Drawing.Color.White;
+            this.lbActor1.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.lbActor1.Location = new System.Drawing.Point(20, 248);
+            this.lbActor1.Name = "lbActor1";
+            this.lbActor1.Size = new System.Drawing.Size(66, 22);
+            this.lbActor1.TabIndex = 12;
+            this.lbActor1.Text = "Actor1";
+            this.lbActor1.Visible = false;
+            // 
+            // lbActor2
+            // 
+            this.lbActor2.AutoSize = true;
+            this.lbActor2.BackColor = System.Drawing.Color.White;
+            this.lbActor2.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.lbActor2.Location = new System.Drawing.Point(20, 433);
+            this.lbActor2.Name = "lbActor2";
+            this.lbActor2.Size = new System.Drawing.Size(66, 22);
+            this.lbActor2.TabIndex = 13;
+            this.lbActor2.Text = "Actor2";
+            this.lbActor2.Visible = false;
+            // 
+            // lbActor3
+            // 
+            this.lbActor3.AutoSize = true;
+            this.lbActor3.BackColor = System.Drawing.Color.White;
+            this.lbActor3.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.lbActor3.Location = new System.Drawing.Point(20, 616);
+            this.lbActor3.Name = "lbActor3";
+            this.lbActor3.Size = new System.Drawing.Size(66, 22);
+            this.lbActor3.TabIndex = 14;
+            this.lbActor3.Text = "Actor3";
+            this.lbActor3.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 682);
+            this.Controls.Add(this.lbActor3);
+            this.Controls.Add(this.lbActor2);
+            this.Controls.Add(this.lbActor1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Actor3);
             this.Controls.Add(this.Actor2);
@@ -327,6 +369,9 @@
         private System.Windows.Forms.RadioButton rbActor2;
         private System.Windows.Forms.RadioButton rbActor1;
         private System.Windows.Forms.Button btRemoveActor;
+        private System.Windows.Forms.Label lbActor1;
+        private System.Windows.Forms.Label lbActor2;
+        private System.Windows.Forms.Label lbActor3;
     }
 }
 
