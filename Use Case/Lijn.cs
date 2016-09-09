@@ -70,18 +70,8 @@ namespace Use_Case
 
         public List<int> BerekenMiddelpunt(int x1, int y1, int x2, int y2)
         {
-            int midx = x2 - x1;
-            int midy = y2 - y1;
-
-            if(midx < 0)
-            {
-                midx = midx * (-1);
-            }
-
-            if(midy < 0)
-            {
-                midy = midy * (-1);
-            }
+            int midx = (x2 + x1) / 2;
+            int midy = (y2 + y1) / 2;
 
             return new List<int> { midx, midy };
             

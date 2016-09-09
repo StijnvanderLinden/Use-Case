@@ -20,6 +20,7 @@ namespace Use_Case
         Font myFont = new Font("Arial", 14);
         Select select = new Select();
         List<bool> actors = new List<bool> { false, false, false };
+        List<string> text = new List<string> { null, null, null };
 
         public Form1()
         {
@@ -29,14 +30,8 @@ namespace Use_Case
             pictureBox.BackColor = Color.White;
         }
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
-        {
-            foreach(List<int> list in select.Lijnen)
-            {
-                blad.DrawLine(p, list[0], list[1], list[2], list[3]);
-            }
-        }
-
+        
+        
         private void btActor_Click(object sender, EventArgs e)
         {
             if (actors[0])
@@ -50,23 +45,46 @@ namespace Use_Case
                     else
                     {
                         Actor3.Visible = true;
-                        blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 510);
+                        text.Insert(2, txtInsert.Text);
                         actors[2] = true;
                     }
                 }
                 else
                 {
                     Actor2.Visible = true;
-                    blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 330);
+                    text.Insert(1, txtInsert.Text);
                     actors[1] = true;
                 }
             }
             else
             {
                 Actor1.Visible = true;
-                blad.DrawString(txtInsert.Text, myFont, Brushes.Black, 23, 140);
+                text.Insert(0, txtInsert.Text);
                 actors[0] = true;
             }
+        }
+
+        private void btRemoveActor_Click(object sender, EventArgs e)
+        {
+            if (rbActor1.Checked)
+            {
+                Actor1.Visible = false;
+                actors[0] = false;
+                text.Insert(0, null);
+            }
+            else if (rbActor2.Checked)
+            {
+                Actor2.Visible = false;
+                actors[1] = false;
+                text.Insert(1, null);
+            }
+            else if (rbActor3.Checked)
+            {
+                Actor3.Visible = false;
+                actors[2] = false;
+                text.Insert(2, null);
+            }
+
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
@@ -105,6 +123,8 @@ namespace Use_Case
             }
         }
 
+        
+
         private void btClear_Click(object sender, EventArgs e)
         {
             blad.Clear(Color.White);
@@ -114,6 +134,29 @@ namespace Use_Case
         private void btRemove_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (List<int> list in select.Lijnen)
+            {
+                blad.DrawLine(p, list[0], list[1], list[2], list[3]);
+            }
+
+            if(text[0] != null)
+            {
+                blad.DrawString(text[0], myFont, Brushes.Black, 23, 140);
+            }
+
+            if (text[1] != null)
+            {
+                blad.DrawString(text[1], myFont, Brushes.Black, 23, 330);
+            }
+
+            if (text[2] != null)
+            {
+                blad.DrawString(text[2], myFont, Brushes.Black, 23, 510);
+            }
         }
     }
 }

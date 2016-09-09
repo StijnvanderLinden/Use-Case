@@ -43,12 +43,18 @@
             this.Actor1 = new System.Windows.Forms.PictureBox();
             this.Actor2 = new System.Windows.Forms.PictureBox();
             this.Actor3 = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rbActor2 = new System.Windows.Forms.RadioButton();
+            this.rbActor1 = new System.Windows.Forms.RadioButton();
+            this.rbActor3 = new System.Windows.Forms.RadioButton();
+            this.btRemoveActor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Actor1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Actor2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Actor3)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -208,11 +214,69 @@
             this.Actor3.TabStop = false;
             this.Actor3.Visible = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btRemoveActor);
+            this.groupBox3.Controls.Add(this.rbActor3);
+            this.groupBox3.Controls.Add(this.rbActor2);
+            this.groupBox3.Controls.Add(this.rbActor1);
+            this.groupBox3.Location = new System.Drawing.Point(320, 14);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(160, 91);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Actoren";
+            // 
+            // rbActor2
+            // 
+            this.rbActor2.AutoSize = true;
+            this.rbActor2.Location = new System.Drawing.Point(7, 43);
+            this.rbActor2.Name = "rbActor2";
+            this.rbActor2.Size = new System.Drawing.Size(59, 17);
+            this.rbActor2.TabIndex = 1;
+            this.rbActor2.TabStop = true;
+            this.rbActor2.Text = "Actor 2";
+            this.rbActor2.UseVisualStyleBackColor = true;
+            // 
+            // rbActor1
+            // 
+            this.rbActor1.AutoSize = true;
+            this.rbActor1.Checked = true;
+            this.rbActor1.Location = new System.Drawing.Point(7, 20);
+            this.rbActor1.Name = "rbActor1";
+            this.rbActor1.Size = new System.Drawing.Size(59, 17);
+            this.rbActor1.TabIndex = 0;
+            this.rbActor1.TabStop = true;
+            this.rbActor1.Text = "Actor 1";
+            this.rbActor1.UseVisualStyleBackColor = true;
+            // 
+            // rbActor3
+            // 
+            this.rbActor3.AutoSize = true;
+            this.rbActor3.Location = new System.Drawing.Point(7, 65);
+            this.rbActor3.Name = "rbActor3";
+            this.rbActor3.Size = new System.Drawing.Size(59, 17);
+            this.rbActor3.TabIndex = 12;
+            this.rbActor3.TabStop = true;
+            this.rbActor3.Text = "Actor 3";
+            this.rbActor3.UseVisualStyleBackColor = true;
+            // 
+            // btRemoveActor
+            // 
+            this.btRemoveActor.Location = new System.Drawing.Point(79, 47);
+            this.btRemoveActor.Name = "btRemoveActor";
+            this.btRemoveActor.Size = new System.Drawing.Size(75, 35);
+            this.btRemoveActor.TabIndex = 12;
+            this.btRemoveActor.Text = "Remove Actor";
+            this.btRemoveActor.UseVisualStyleBackColor = true;
+            this.btRemoveActor.Click += new System.EventHandler(this.btRemoveActor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 682);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.Actor3);
             this.Controls.Add(this.Actor2);
             this.Controls.Add(this.Actor1);
@@ -234,6 +298,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Actor1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Actor2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Actor3)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -256,6 +322,11 @@
         private System.Windows.Forms.PictureBox Actor1;
         private System.Windows.Forms.PictureBox Actor2;
         private System.Windows.Forms.PictureBox Actor3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rbActor3;
+        private System.Windows.Forms.RadioButton rbActor2;
+        private System.Windows.Forms.RadioButton rbActor1;
+        private System.Windows.Forms.Button btRemoveActor;
     }
 }
 
