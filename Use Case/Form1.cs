@@ -12,26 +12,29 @@ namespace Use_Case
 {
     public partial class Form1 : Form
     {
-
         Graphics blad;
         Pen p;
+        Pen r;
         int i = 0;
         int x1, x2, y1, y2;
-        Font myFont = new Font("Arial", 14);
-        Select select = new Select();
-        List<bool> actors = new List<bool> { false, false, false };
-        List<string> text = new List<string> { null, null, null };
+        Font myFont;
+        Select select;
+        List<bool> actors;
+        List<string> text;
 
         public Form1()
         {
             InitializeComponent();
             blad = pictureBox.CreateGraphics();
             p = new Pen(Color.Black, 2);
+            r = new Pen(Color.Red, 2);
             pictureBox.BackColor = Color.White;
+            myFont = new Font("Arial", 14);
+            select = new Select();
+            actors = new List<bool> { false, false, false };
+            text = new List<string> { null, null, null };
         }
 
-        
-        
         private void btActor_Click(object sender, EventArgs e)
         {
             if (actors[0])
@@ -95,6 +98,7 @@ namespace Use_Case
             MouseEventArgs muis = (MouseEventArgs)e;
             if (rbCreate.Checked)
             {
+                //Create
                 if (rbLine.Checked)
                 {
 
@@ -112,26 +116,40 @@ namespace Use_Case
                         blad.DrawLine(p, x1, y1, x2, y2);
                         Lijn lijn = new Lijn(x1, y1, x2, y2);
                         select.Lijnen.Add(new List<int> { x1, y1, x2, y2 });
+                        select.Middelpunten.Add(lijn.Midpunt);
+
                     }
                 }
                 else
                 {
-                    x1 = muis.X;
-                    y1 = muis.Y;
+                    blad.DrawEllipse(p, muis.X, muis.Y, 150, 70);
                 }
             }
 
+            //Select
             else
             {
+                //Kan zijn dat er nog geen lijnen zijn of te ver van lijn
+                try
+                {
+                    int i = select.SelectLijn(muis.X, muis.Y);
+                    blad.DrawLine(r, select.Lijnen[i][0], select.Lijnen[i][1], select.Lijnen[i][2], select.Lijnen[i][3]);
+                }
+                catch
+                {
+                    MessageBox.Show("Klik dichterbij een lijn.");
+                }
+
             }
         }
 
-        
+
 
         private void btClear_Click(object sender, EventArgs e)
         {
             blad.Clear(Color.White);
             select.Lijnen.Clear();
+            select.Middelpunten.Clear();
             actors.Insert(0, false);
             actors.Insert(1, false);
             actors.Insert(2, false);
