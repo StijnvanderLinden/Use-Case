@@ -12,9 +12,23 @@ namespace Use_Case
 {
     public partial class UseCaseForm : Form
     {
-        public UseCaseForm()
+        Form1 form1 = new Form1();
+
+        public UseCaseForm(Form1 form)
         {
             InitializeComponent();
+            form1 = form;
+        }
+        
+        private void btOK_Click(object sender, EventArgs e)
+        {
+            form1.VoegUseCaseToe(this);
+            Hide();
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            form1.DeleteUseCase();
         }
     }
 }

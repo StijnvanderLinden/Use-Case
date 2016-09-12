@@ -9,28 +9,24 @@ namespace Use_Case
 {
     class Select
     {
-        private List<List<int>> lijnen = new List<List<int>>();
-        private List<Point> middelpunten = new List<Point>();
         private int x;
         private int y;
         private int currenti;
         public Select()
         {
-            
-        }
-        public List<List<int>> Lijnen { get { return lijnen; } }
-        public List<Point> Middelpunten { get { return middelpunten; } }
 
-        public int SelectLijn(int x1, int y1)
+        }
+
+        public int SelectLijn(int x1, int y1, List<Lijn> lijnen)
         {
             int closestLine = 1000;
             double currentLine;
             bool range = false;
             int i = 0;
-            foreach (Point point in middelpunten)
+            foreach (Lijn line in lijnen)
             {
-                x = point.X - x1;
-                y = point.Y - y1;
+                x = line.Midpunt.X - x1;
+                y = line.Midpunt.Y - y1;
                 if (x < 0)
                 {
                     x = x * (-1);

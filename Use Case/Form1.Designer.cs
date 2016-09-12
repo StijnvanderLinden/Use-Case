@@ -44,13 +44,14 @@
             this.Actor2 = new System.Windows.Forms.PictureBox();
             this.Actor3 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btRemoveActor = new System.Windows.Forms.Button();
+            this.rbActor3 = new System.Windows.Forms.RadioButton();
             this.rbActor2 = new System.Windows.Forms.RadioButton();
             this.rbActor1 = new System.Windows.Forms.RadioButton();
-            this.rbActor3 = new System.Windows.Forms.RadioButton();
-            this.btRemoveActor = new System.Windows.Forms.Button();
             this.lbActor1 = new System.Windows.Forms.Label();
             this.lbActor2 = new System.Windows.Forms.Label();
             this.lbActor3 = new System.Windows.Forms.Label();
+            this.btRemoveLines = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -149,7 +150,7 @@
             // 
             // btClear
             // 
-            this.btClear.Location = new System.Drawing.Point(741, 14);
+            this.btClear.Location = new System.Drawing.Point(741, 4);
             this.btClear.Name = "btClear";
             this.btClear.Size = new System.Drawing.Size(75, 23);
             this.btClear.TabIndex = 3;
@@ -159,7 +160,7 @@
             // 
             // btRemove
             // 
-            this.btRemove.Location = new System.Drawing.Point(741, 43);
+            this.btRemove.Location = new System.Drawing.Point(741, 34);
             this.btRemove.Name = "btRemove";
             this.btRemove.Size = new System.Drawing.Size(75, 23);
             this.btRemove.TabIndex = 4;
@@ -230,6 +231,27 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Actoren";
             // 
+            // btRemoveActor
+            // 
+            this.btRemoveActor.Location = new System.Drawing.Point(79, 47);
+            this.btRemoveActor.Name = "btRemoveActor";
+            this.btRemoveActor.Size = new System.Drawing.Size(75, 35);
+            this.btRemoveActor.TabIndex = 12;
+            this.btRemoveActor.Text = "Remove Actor";
+            this.btRemoveActor.UseVisualStyleBackColor = true;
+            this.btRemoveActor.Click += new System.EventHandler(this.btRemoveActor_Click);
+            // 
+            // rbActor3
+            // 
+            this.rbActor3.AutoSize = true;
+            this.rbActor3.Location = new System.Drawing.Point(7, 65);
+            this.rbActor3.Name = "rbActor3";
+            this.rbActor3.Size = new System.Drawing.Size(59, 17);
+            this.rbActor3.TabIndex = 12;
+            this.rbActor3.TabStop = true;
+            this.rbActor3.Text = "Actor 3";
+            this.rbActor3.UseVisualStyleBackColor = true;
+            // 
             // rbActor2
             // 
             this.rbActor2.AutoSize = true;
@@ -252,27 +274,6 @@
             this.rbActor1.TabStop = true;
             this.rbActor1.Text = "Actor 1";
             this.rbActor1.UseVisualStyleBackColor = true;
-            // 
-            // rbActor3
-            // 
-            this.rbActor3.AutoSize = true;
-            this.rbActor3.Location = new System.Drawing.Point(7, 65);
-            this.rbActor3.Name = "rbActor3";
-            this.rbActor3.Size = new System.Drawing.Size(59, 17);
-            this.rbActor3.TabIndex = 12;
-            this.rbActor3.TabStop = true;
-            this.rbActor3.Text = "Actor 3";
-            this.rbActor3.UseVisualStyleBackColor = true;
-            // 
-            // btRemoveActor
-            // 
-            this.btRemoveActor.Location = new System.Drawing.Point(79, 47);
-            this.btRemoveActor.Name = "btRemoveActor";
-            this.btRemoveActor.Size = new System.Drawing.Size(75, 35);
-            this.btRemoveActor.TabIndex = 12;
-            this.btRemoveActor.Text = "Remove Actor";
-            this.btRemoveActor.UseVisualStyleBackColor = true;
-            this.btRemoveActor.Click += new System.EventHandler(this.btRemoveActor_Click);
             // 
             // lbActor1
             // 
@@ -310,11 +311,22 @@
             this.lbActor3.Text = "Actor3";
             this.lbActor3.Visible = false;
             // 
+            // btRemoveLines
+            // 
+            this.btRemoveLines.Location = new System.Drawing.Point(741, 62);
+            this.btRemoveLines.Name = "btRemoveLines";
+            this.btRemoveLines.Size = new System.Drawing.Size(75, 42);
+            this.btRemoveLines.TabIndex = 15;
+            this.btRemoveLines.Text = "Remove Lines";
+            this.btRemoveLines.UseVisualStyleBackColor = true;
+            this.btRemoveLines.Click += new System.EventHandler(this.btRemoveLines_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 682);
+            this.Controls.Add(this.btRemoveLines);
             this.Controls.Add(this.lbActor3);
             this.Controls.Add(this.lbActor2);
             this.Controls.Add(this.lbActor1);
@@ -372,6 +384,7 @@
         private System.Windows.Forms.Label lbActor1;
         private System.Windows.Forms.Label lbActor2;
         private System.Windows.Forms.Label lbActor3;
+        private System.Windows.Forms.Button btRemoveLines;
     }
 }
 

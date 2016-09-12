@@ -12,15 +12,23 @@ namespace Use_Case
 {
     public partial class Form1 : Form
     {
+        UseCaseForm UseCase;
         Graphics blad;
         Pen p;
         Pen r;
+        SolidBrush b;
+        Point point1;
+        Point point2;
         int i = 0;
+        int j = 0;
         int x1, x2, y1, y2;
+        int selected;
         Font myFont;
         Select select;
         List<bool> actors;
         List<string> text;
+        List<Lijn> lijnen;
+        List<Usecase> usecases;
 
         public Form1()
         {
@@ -28,11 +36,14 @@ namespace Use_Case
             blad = pictureBox.CreateGraphics();
             p = new Pen(Color.Black, 2);
             r = new Pen(Color.Red, 2);
+            b = new SolidBrush(Color.Black);
             pictureBox.BackColor = Color.White;
-            myFont = new Font("Arial", 14);
+            myFont = new Font("Arial", 8);
             select = new Select();
             actors = new List<bool> { false, false, false };
             text = new List<string> { null, null, null };
+            lijnen = new List<Lijn>();
+            usecases = new List<Usecase>();
         }
 
         private void btActor_Click(object sender, EventArgs e)
@@ -43,7 +54,7 @@ namespace Use_Case
                 {
                     if (actors[2])
                     {
-                        MessageBox.Show("Kan niet meer Actors toevoegen.");
+                        MessageBox.Show("Kan geen Actors toevoegen.");
                     }
                     else
                     {
@@ -115,13 +126,16 @@ namespace Use_Case
                         y2 = muis.Y;
                         blad.DrawLine(p, x1, y1, x2, y2);
                         Lijn lijn = new Lijn(x1, y1, x2, y2);
-                        select.Lijnen.Add(new List<int> { x1, y1, x2, y2 });
-                        select.Middelpunten.Add(lijn.Midpunt);
-
+                        lijnen.Add(new Lijn(x1, y1, x2, y2));
                     }
                 }
+                //Use Case
                 else
                 {
+                    UseCase = new UseCaseForm(this);
+                    point1 = new Point(muis.X, muis.Y);
+                    point2 = new Point(muis.X + 150, muis.Y + 70);
+                    UseCase.Show();
                     blad.DrawEllipse(p, muis.X, muis.Y, 150, 70);
                 }
             }
@@ -129,27 +143,65 @@ namespace Use_Case
             //Select
             else
             {
-                //Kan zijn dat er nog geen lijnen zijn of te ver van lijn
-                try
+                if (usecases.Count() > 0)
                 {
-                    int i = select.SelectLijn(muis.X, muis.Y);
-                    blad.DrawLine(r, select.Lijnen[i][0], select.Lijnen[i][1], select.Lijnen[i][2], select.Lijnen[i][3]);
-                }
-                catch
-                {
-                    MessageBox.Show("Klik dichterbij een lijn.");
-                }
+                    j = 0;
+                    foreach (Usecase usecase in usecases)
+                    {
+                        if (muis.X > usecase.Point1.X && muis.X < usecase.Point2.X && muis.Y > usecase.Point1.Y && muis.Y < usecase.Point2.Y)
+                        {
+                            UseCase.txtNaam.Text = usecases[j].Naam;
+                            UseCase.txtSamenvatting.Text = usecases[j].Samenvatting;
+                            UseCase.txtActor.Text = usecases[j].Actor;
+                            UseCase.txtAannamen.Text = usecases[j].Aannamen;
+                            UseCase.txtBeschrijving.Text = usecases[j].Beschrijving;
+                            UseCase.txtUitzondering.Text = usecases[j].Uitzonderingen;
+                            UseCase.txtResultaat.Text = usecases[j].Resultaat;
+                            UseCase.Show();
+                            j++;
+                        }
+                    }
 
+                    //Kan zijn dat er nog geen lijnen zijn of je klikt te ver van lijn
+                    try
+                    {
+                        selected = select.SelectLijn(muis.X, muis.Y, lijnen);
+                        blad.DrawLine(r, lijnen[selected].X1, lijnen[selected].Y1, lijnen[selected].X2, lijnen[selected].Y2);
+                    }
+                    catch
+                    {
+                        //Lijn verschuiven
+                        //if (select.Lijnen[selected - 1][0] < select.Lijnen[selected - 1][2])
+                        //{
+                        //    select.Lijnen[selected - 1][0] = muis.X + (select.Lijnen[selected - 1][2] + select.Lijnen[selected - 1][0]);
+                        //    select.Lijnen[selected - 1][2] = muis.X - (select.Lijnen[selected - 1][2] + select.Lijnen[selected - 1][0]);
+                        //}
+                        //else
+                        //{
+                        //    select.Lijnen[selected - 1][0] = muis.X - (select.Lijnen[selected - 1][2] + select.Lijnen[selected - 1][0]);
+                        //    select.Lijnen[selected - 1][2] = muis.X + (select.Lijnen[selected - 1][2] + select.Lijnen[selected - 1][0]);
+                        //}
+
+                        //if (select.Lijnen[selected - 1][1] < select.Lijnen[selected - 1][3])
+                        //{
+                        //    select.Lijnen[selected - 1][1] = muis.Y + (select.Lijnen[selected - 1][1] + select.Lijnen[selected - 1][3]);
+                        //    select.Lijnen[selected - 1][3] = muis.Y - (select.Lijnen[selected - 1][1] + select.Lijnen[selected - 1][3]);
+                        //}
+                        //else
+                        //{
+                        //    select.Lijnen[selected - 1][1] = muis.Y - (select.Lijnen[selected - 1][1] + select.Lijnen[selected - 1][3]);
+                        //    select.Lijnen[selected - 1][3] = muis.Y + (select.Lijnen[selected - 1][1] + select.Lijnen[selected - 1][3]);
+                        //}
+                        //pictureBox.Invalidate();
+                    }
+                }
             }
         }
-
-
-
         private void btClear_Click(object sender, EventArgs e)
         {
             blad.Clear(Color.White);
-            select.Lijnen.Clear();
-            select.Middelpunten.Clear();
+            lijnen.Clear();
+            usecases.Clear();
             actors.Insert(0, false);
             actors.Insert(1, false);
             actors.Insert(2, false);
@@ -163,15 +215,55 @@ namespace Use_Case
 
         private void btRemove_Click(object sender, EventArgs e)
         {
+            try
+            {
+                lijnen.RemoveAt(selected);
+                pictureBox.Invalidate();
+            }
+            catch
+            {
 
+            }
+        }
+
+        private void btRemoveLines_Click(object sender, EventArgs e)
+        {
+            lijnen.Clear();
+            pictureBox.Invalidate();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            foreach (List<int> list in select.Lijnen)
+            try
             {
-                blad.DrawLine(p, list[0], list[1], list[2], list[3]);
+                foreach (Lijn lijn in lijnen)
+                {
+                    blad.DrawLine(p, lijn.X1, lijn.Y1, lijn.X2, lijn.Y2);
+                }
+
+                foreach(Usecase usecase in usecases)
+                {
+                    blad.DrawString(usecase.Naam, myFont, b, usecase.Point1.X + 20, usecase.Point1.Y + 25);
+                }
             }
+            catch
+            {
+
+            }
+
+        }
+        public void VoegUseCaseToe(UseCaseForm form)
+        {
+            Usecase usecase = new Usecase(form.txtNaam.Text, form.txtSamenvatting.Text, form.txtActor.Text, form.txtAannamen.Text, form.txtBeschrijving.Text, form.txtUitzondering.Text, form.txtResultaat.Text, point1, point2);
+            usecases.Add(usecase);
+        }
+
+        public void DeleteUseCase()
+        {
+            usecases.RemoveAt(j - 1);
+            UseCase = new UseCaseForm(this);
+            UseCase.Hide();
+            pictureBox.Invalidate();
         }
     }
 }

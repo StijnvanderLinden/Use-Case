@@ -43,6 +43,7 @@
             this.txtUitzondering = new System.Windows.Forms.RichTextBox();
             this.txtResultaat = new System.Windows.Forms.TextBox();
             this.btOK = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -167,12 +168,24 @@
             this.btOK.TabIndex = 14;
             this.btOK.Text = "OK";
             this.btOK.UseVisualStyleBackColor = true;
+            this.btOK.Click += new System.EventHandler(this.btOK_Click);
+            // 
+            // btDelete
+            // 
+            this.btDelete.Location = new System.Drawing.Point(12, 368);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(75, 23);
+            this.btDelete.TabIndex = 15;
+            this.btDelete.Text = "Delete";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // UseCaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 403);
+            this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.txtResultaat);
             this.Controls.Add(this.txtUitzondering);
@@ -198,19 +211,20 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNaam;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtSamenvatting;
-        private System.Windows.Forms.TextBox txtActor;
-        private System.Windows.Forms.TextBox txtAannamen;
-        private System.Windows.Forms.RichTextBox txtBeschrijving;
-        private System.Windows.Forms.RichTextBox txtUitzondering;
-        private System.Windows.Forms.TextBox txtResultaat;
         private System.Windows.Forms.Button btOK;
+        public System.Windows.Forms.TextBox txtNaam;
+        public System.Windows.Forms.TextBox txtSamenvatting;
+        public System.Windows.Forms.TextBox txtActor;
+        public System.Windows.Forms.TextBox txtAannamen;
+        public System.Windows.Forms.RichTextBox txtBeschrijving;
+        public System.Windows.Forms.RichTextBox txtUitzondering;
+        public System.Windows.Forms.TextBox txtResultaat;
+        private System.Windows.Forms.Button btDelete;
     }
 }
